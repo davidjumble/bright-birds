@@ -27,10 +27,11 @@ const HeaderCell = styled.th`
 `
 
 const Row = styled.tr<{ $conflict: boolean }>`
-  background: #fff;
+  background-color: ${(props) => props.theme.colors.background};
   border: 1px solid ${(props) => props.theme.colors.highlight};
   border-radius: ${(props) => props.theme.borderRadius};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  color: ${(props) => props.theme.colors.highlight};
 
   td {
     padding: 8px;
@@ -49,6 +50,30 @@ const Badge = styled.span`
   border-radius: ${(props) => props.theme.borderRadius};
   border: 1px solid ${(props) => props.theme.colors.highlight};
   font-size: 0.8rem;
+`
+
+// New: styled employee button
+const EmployeeButton = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: orange;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 9999px; /* capsule shape */
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: darkorange;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
 `
 
 export function AbsenceTable({ absences, sortKey }: { absences: Absence[]; sortKey: SortKey }) {
@@ -78,9 +103,10 @@ export function AbsenceTable({ absences, sortKey }: { absences: Absence[]; sortK
             return (
               <Row key={a.id} $conflict={!!(conflict && conflict.conflicts)}>
                 <td>
-                  <Link to={`/employee/${a.employee.id}`}>
+                  <EmployeeButton to={`/employee/${a.employee.id}`}>
+                    <img src="/click.svg" alt="" />
                     {a.employee.firstName} {a.employee.lastName}
-                  </Link>
+                  </EmployeeButton>
                 </td>
                 <td>{a.startDate.split('T')[0]}</td>
                 <td>{end}</td>
@@ -90,7 +116,7 @@ export function AbsenceTable({ absences, sortKey }: { absences: Absence[]; sortK
                   {conflictsLoading ? (
                     '...'
                   ) : conflict && conflict.conflicts ? (
-                    <Badge>⚠️</Badge>
+                    <Badge>OH NO</Badge>
                   ) : (
                     <Badge>OK</Badge>
                   )}
