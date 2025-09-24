@@ -4,19 +4,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import App from './App'
+import { theme } from './theme'
 
 const qc = new QueryClient()
 
-// Define your theme
-const theme = {
-  colors: {
-    background: '#fff8dc', // soft yellow
-    text: '#333333',       // dark grey
-    highlight: 'tomato',   // highlights, buttons, borders
-  },
-  font: 'Roboto, sans-serif',
-  borderRadius: '12px',
-}
+
+
 
 // Global styles
 const GlobalStyle = createGlobalStyle`

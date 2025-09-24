@@ -30,13 +30,14 @@ export default function AbsencesPage() {
       <Controls>
         <h2>All Absences</h2>
         <div>
-          <label>Sort: </label>
+          <label>Sort: 
           <SortSelect value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)}>
             <option value="startDate">Start Date</option>
             <option value="endDate">End Date</option>
             <option value="employeeName">Employee</option>
             <option value="absenceType">Type</option>
           </SortSelect>
+          </label>
         </div>
       </Controls>
       <AbsenceTable absences={data || []} sortKey={sortKey} />
