@@ -1,5 +1,14 @@
 # BrightHR Absences 
 
+## how to get going
+
+npm install
+npm run dev
+
+## run tests
+
+npm run test
+
 ## Hi
 
 This SPA displays employee absences in a sortable table and highlights any conflicts. It’s built with **React, TypeScript, TanStack Query, and styled-components**, and demonstrates modern React best practices including hooks, memoization, and theming.
